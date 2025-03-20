@@ -16,7 +16,14 @@ export class MoroSystemsPage {
   }
 
   async acceptCookies() {
-    await this.acceptCookiesButton.click();
+    const isVisible = await this.acceptCookiesButton
+    .waitFor({ state: 'visible', timeout: 5000 })
+    .then(() => this.acceptCookiesButton.isVisible())
+    .catch(() => false);
+
+    if(isVisible){
+      await this.acceptCookiesButton.click();
+    }
   }
 
   async openKariera(){

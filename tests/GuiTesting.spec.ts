@@ -18,3 +18,11 @@ test('GUI Testing', async ({ page }) => {
     await moroSystemsPage.openKariera();
     await moroSystemsPage.filterCity('Brno');
 });
+
+test('GUI Testing2', async ({ page }) => {
+    await page.goto('https://www.morosystems.cz/o-nas/');
+    const moroSystemsPage = new MoroSystemsPage(page);
+    await moroSystemsPage.acceptCookies();
+    await moroSystemsPage.openKariera();
+    await moroSystemsPage.filterCity('Brno');
+});
