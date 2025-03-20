@@ -3,7 +3,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
     testDir: './tests',
     fullyParallel: true,
-    workers: 2,
+    workers: 1,
     reporter: 'html',
     projects: [
         {
@@ -11,7 +11,7 @@ export default defineConfig({
             use: { 
                 ...devices['Desktop Chrome'],
                 baseURL: 'https://google.com',
-                headless: false,
+                headless: true,
                 screenshot: 'only-on-failure',
                 video: 'retain-on-failure',
                 viewport: { width: 1280, height: 720 },
