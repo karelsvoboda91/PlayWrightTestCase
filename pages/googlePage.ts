@@ -13,17 +13,19 @@ export class GooglePage {
     this.acceptCookiesButton = page.locator('(//button)[5]');
     this.searchInput = page.locator('//form[@action="/search"]//textarea');
     this.allTab = page.locator('//div[@role="list"]//div[text()="Vše"]');
-    this.picturesTab = page.locator('//div[@role="list"]//div[text()="Obrázky"]');
+    this.picturesTab = page.locator(
+      '//div[@role="list"]//div[text()="Obrázky"]'
+    );
     this.newsTab = page.locator('//div[@role="list"]//div[text()="Zprávy"]');
   }
 
   async acceptCookies() {
     const isVisible = await this.acceptCookiesButton
-    .waitFor({ state: 'visible', timeout: 5000 })
-    .then(() => this.acceptCookiesButton.isVisible())
-    .catch(() => false);
+      .waitFor({ state: 'visible', timeout: 5000 })
+      .then(() => this.acceptCookiesButton.isVisible())
+      .catch(() => false);
 
-    if(isVisible){
+    if (isVisible) {
       await this.acceptCookiesButton.click();
     }
   }
@@ -38,7 +40,7 @@ export class GooglePage {
   }
 
   async validateSearchResultsPage() {
-    await expect(this.allTab).toBeVisible({timeout: 5000});
+    await expect(this.allTab).toBeVisible({ timeout: 5000 });
     await expect(this.picturesTab).toBeVisible();
     await expect(this.newsTab).toBeVisible();
   }

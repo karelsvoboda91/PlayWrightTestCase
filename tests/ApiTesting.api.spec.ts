@@ -24,5 +24,5 @@ test('API Testing', async () => {
   expect(completeTaskResponse.data.completed).toBe(true);
 
   const deleteTaskResponse = await apiClient.tasksIdDelete(taskId);
-  expect(deleteTaskResponse.status).toBe(200);  
+  expect(deleteTaskResponse.status).toBe(200);
 });

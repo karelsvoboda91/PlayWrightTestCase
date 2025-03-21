@@ -1,19 +1,24 @@
 Installation
 -----------------
-- checkout this repository
+- Checkout this repository
 - `npm install`
+- `npx playwright install`
 
-Installation and start backend app
+Install and start backend app
 -----------------
-- info: [todo-be](todo-be/README.md)
+- Info: [todo-be](todo-be/README.md)
 
-Run tests:
+Run tests
 -----------------
-- run all tests: `npx playwright test`
-- run API tests: `npx playwright test ./tests/ApiTesting.api.spec.ts`
-- run GUI tests: `npx playwright test ./tests/GuiTesting.gui.spec.ts`
+- Run all tests: `npx playwright test`
+- Run API tests: `npx playwright test ./tests/ApiTesting.api.spec.ts`
+- Run GUI tests: `npx playwright test ./tests/GuiTesting.gui.spec.ts`
 
-Show report:
+Show report
 -----------------
-- show html report: `npx playwright show-report`
+- Show html report: `npx playwright show-report`
 - GitHub Actions report is located in Artifacts section
+
+Prettier code style
+-----------------
+- Auto code fix: `npx prettier --write "**/*.ts"`

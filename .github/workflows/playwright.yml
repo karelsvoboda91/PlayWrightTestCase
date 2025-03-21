@@ -13,11 +13,11 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
-    - name: Install Dependencies
+    - name: Install dependencies backend app
       run: |
         cd todo-be
         npm install
-    - name: Start Application
+    - name: Start backend app
       run: |
         cd todo-be
         npm start &
