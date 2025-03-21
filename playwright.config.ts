@@ -3,7 +3,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
     testDir: './tests',
     fullyParallel: true,
-    workers: 3,
+    workers: 2,
     reporter: 'html',
     projects: [
         {
@@ -11,7 +11,6 @@ export default defineConfig({
             testMatch: 'tests/*.gui.spec.ts',
             use: {
                 ...devices['Desktop Chrome'],
-                baseURL: 'https://google.com',
                 headless: true,
                 screenshot: 'only-on-failure',
                 video: 'retain-on-failure',
