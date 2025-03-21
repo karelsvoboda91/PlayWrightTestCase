@@ -6,6 +6,8 @@ export class MoroSystemsPage {
   readonly onasDropDown: Locator;
   readonly karieraButton: Locator;
   readonly cityFilterDropDown: Locator;
+  readonly positions: Locator;
+  readonly bgVideo: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -13,6 +15,8 @@ export class MoroSystemsPage {
     this.onasDropDown = page.locator('//div[@class="dropdown__toggle"]//a[text()="O nás"]');
     this.karieraButton = page.locator('//ul[@class="dropdown__list"]//a[text()="Kariéra"]');
     this.cityFilterDropDown = page.locator('//div[@id="pozice"]//span[@class="inp-custom-select__select-wrap"]');
+    this.positions = page.locator('//ul[@class="c-positions__wrap"]');
+    this.bgVideo = page.locator('//div[@class="b-intro__bg"]');
   }
 
   async acceptCookies() {

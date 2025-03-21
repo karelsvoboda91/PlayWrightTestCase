@@ -19,10 +19,12 @@ test('GUI Testing', async ({ page }) => {
     await moroSystemsPage.filterCity('Brno');
 });
 
-test('GUI Testing2', async ({ page }) => {
-    await page.goto('https://www.morosystems.cz/o-nas/');
+test('Visual Testing', async ({ page }) => {
+    await page.goto('https://www.morosystems.cz/kariera/');
+
     const moroSystemsPage = new MoroSystemsPage(page);
-    await moroSystemsPage.acceptCookies();
-    await moroSystemsPage.openKariera();
-    await moroSystemsPage.filterCity('Brno');
+    await expect(page).toHaveScreenshot({ 
+        fullPage: true,
+        mask: [moroSystemsPage.bgVideo,moroSystemsPage.positions],
+        maxDiffPixels: 10 });
 });
