@@ -15,12 +15,14 @@ export default defineConfig({
                 screenshot: 'only-on-failure',
                 video: 'retain-on-failure',
                 viewport: { width: 1280, height: 720 },
+                geolocation: { latitude: 50.0755, longitude: 14.4378 },
+                permissions: ['geolocation'],
                 launchOptions: {
                     args: [
-                      '--disable-blink-features=AutomationControlled',
-                      '--disable-infobars',
+                        '--disable-blink-features=AutomationControlled',
+                        '--disable-infobars',
                     ],
-                  },
+                },
             },
         }
     ],
