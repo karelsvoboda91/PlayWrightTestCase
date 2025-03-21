@@ -3,7 +3,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
-  workers: 3,
+  workers: 2,
   reporter: 'html',
   projects: [
     {
