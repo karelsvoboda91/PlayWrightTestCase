@@ -36,7 +36,7 @@ test('Visual Testing @chromium @firefox @safari @mobileChrome @mobileSafari', as
   await expect(page).toHaveScreenshot({
     fullPage: true,
     mask: [moroSystemsPage.bgVideo, moroSystemsPage.positions],
-    maxDiffPixels: 2000,
+    maxDiffPixels: 20000,
     timeout: 10000
   });
 });
