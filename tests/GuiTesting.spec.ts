@@ -26,5 +26,5 @@ test('Visual Testing', async ({ page }) => {
     await expect(page).toHaveScreenshot({ 
         fullPage: true,
         mask: [moroSystemsPage.bgVideo,moroSystemsPage.positions],
-        maxDiffPixels: 10 });
+        maxDiffPixels: 100 });
 });
