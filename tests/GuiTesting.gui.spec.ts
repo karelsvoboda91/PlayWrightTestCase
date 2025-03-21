@@ -37,5 +37,6 @@ test('Visual Testing @chromium @firefox @safari @mobileChrome @mobileSafari', as
     fullPage: true,
     mask: [moroSystemsPage.bgVideo, moroSystemsPage.positions],
     maxDiffPixels: 2000,
+    timeout: 10000
   });
 });

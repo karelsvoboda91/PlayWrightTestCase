@@ -34,6 +34,6 @@ jobs:
       with:
         name: playwright-report
         path: |
-              playwright-report/
-              tests/GuiTesting.gui.spec.ts-snapshots/
+          playwright-report/
+          tests/GuiTesting.gui.spec.ts-snapshots/
         retention-days: 30
