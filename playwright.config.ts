@@ -8,15 +8,20 @@ export default defineConfig({
     projects: [
         {
             name: 'chromium',
-            use: { 
+            use: {
                 ...devices['Desktop Chrome'],
                 baseURL: 'https://google.com',
                 headless: true,
                 screenshot: 'only-on-failure',
                 video: 'retain-on-failure',
                 viewport: { width: 1280, height: 720 },
-                locale: 'en-EN'
-             },
+                launchOptions: {
+                    args: [
+                      '--disable-blink-features=AutomationControlled',
+                      '--disable-infobars',
+                    ],
+                  },
+            },
         }
     ],
 });
