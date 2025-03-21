@@ -9,6 +9,7 @@ export default defineConfig({
     {
       name: 'chromium',
       testMatch: 'tests/*.gui.spec.ts',
+      grep: /@chromium/,
       use: {
         ...devices['Desktop Chrome'],
         headless: true,
@@ -24,6 +25,30 @@ export default defineConfig({
           ],
         },
       },
+    },
+    {
+      name: 'Firefox',
+      testMatch: 'tests/*.gui.spec.ts',
+      grep: /@firefox/,
+      use: { ...devices['Desktop Firefox'] },
+    },
+    {
+      name: 'Safari',
+      testMatch: 'tests/*.gui.spec.ts',
+      grep: /@safari/,
+      use: { ...devices['Desktop Safari'] },
+    },
+    {
+      name: 'Mobile Chrome',
+      testMatch: 'tests/*.gui.spec.ts',
+      grep: /@mobileChrome/,
+      use: { ...devices['Pixel 5'] },
+    },
+    {
+      name: 'Mobile Safari',
+      testMatch: 'tests/*.gui.spec.ts',
+      grep: /@mobileSafari/,
+      use: { ...devices['iPhone 12'] },
     },
     {
       name: 'api',

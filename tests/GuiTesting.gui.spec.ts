@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { GooglePage } from '../pages/googlePage';
 import { MoroSystemsPage } from '../pages/moroSystemsPage';
 
-test('GUI Testing', async ({ page }) => {
+test('GUI Testing @chromium', async ({ page }) => {
   await page.goto('https://google.com/?hl=cs'); // /?hl=cs will ensure Google in Czech
   const googlePage = new GooglePage(page);
   await googlePage.acceptCookies();
@@ -25,7 +25,9 @@ test('GUI Testing', async ({ page }) => {
   await moroSystemsPage.checkFilterCity('Brno');
 });
 
-test('Visual Testing', async ({ page }) => {
+test('Visual Testing @chromium @firefox @safari @mobileChrome @mobileSafari', async ({
+  page,
+}) => {
   await page.goto('https://www.morosystems.cz/kariera/');
   await page.evaluate(() => {
     document.body.style.overflow = 'hidden'; // hide scrollbar in headed mode
