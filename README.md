@@ -11,6 +11,9 @@ npm start
 Run tests:
 npx playwright test
 
-npx playwright test ./tests/GuiTesting.spec.ts
+npx playwright test ./tests/GuiTesting.gui.spec.ts
 
-npx playwright test ./tests/ApiTesting.spec.ts
+npx playwright test ./tests/ApiTesting.api.spec.ts
+
+Report:
+npx playwright show-report
