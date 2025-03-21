@@ -28,7 +28,7 @@ test('GUI Testing @chromium', async ({ page }) => {
 test('Visual Testing @chromium @firefox @safari @mobileChrome @mobileSafari', async ({
   page,
 }) => {
-  await page.goto('https://www.morosystems.cz/kariera/', { waitUntil: 'networkidle'});
+  await page.goto('https://www.morosystems.cz/kariera/', { waitUntil: 'domcontentloaded'});
   await page.evaluate(() => {
     document.body.style.overflow = 'hidden'; // hide scrollbar in headed mode
   });
