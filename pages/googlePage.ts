@@ -8,15 +8,18 @@ export class GooglePage {
   readonly picturesTab: Locator;
   readonly newsTab: Locator;
 
+  // In this page object I want to show you Playwright built-in locators
+  // It would be ideal to use some Id in locators, but I'm afraid that Google changes most attributes dynamically
+  // For this demo purpose I use only Czech localization
   constructor(page: Page) {
     this.page = page;
-    this.acceptCookiesButton = page.locator('(//button)[5]');
-    this.searchInput = page.locator('//form[@action="/search"]//textarea');
-    this.allTab = page.locator('//div[@role="list"]//div[text()="Vše"]');
-    this.picturesTab = page.locator(
-      '//div[@role="list"]//div[text()="Obrázky"]'
-    );
-    this.newsTab = page.locator('//div[@role="list"]//div[text()="Zprávy"]');
+    this.acceptCookiesButton = page.getByRole('button', {
+      name: 'Přijmout vše',
+    });
+    this.searchInput = page.getByLabel('Najít');
+    this.allTab = page.getByText('Vše').first();
+    this.picturesTab = page.getByText('Obrázky').first();
+    this.newsTab = page.getByText('Zprávy').first();
   }
 
   async acceptCookies() {
@@ -37,7 +40,7 @@ export class GooglePage {
   }
 
   async openResult(text: string) {
-    await this.page.click(`//h3[text()="${text}"]`);
+    await this.page.getByText(text).click();
   }
 
   async validateSearchResultsPage() {

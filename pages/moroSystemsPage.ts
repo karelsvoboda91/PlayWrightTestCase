@@ -3,35 +3,37 @@ import { Page, Locator, expect } from '@playwright/test';
 export class MoroSystemsPage {
   readonly page: Page;
   readonly acceptCookiesButton: Locator;
-  readonly onasDropDown: Locator;
-  readonly karieraButton: Locator;
+  readonly aboutUsDropDown: Locator;
+  readonly careerButton: Locator;
   readonly cityFilterDropDown: Locator;
-  readonly positions: Locator;
-  readonly bgVideo: Locator;
+  readonly positionsWrap: Locator;
   readonly position: Locator;
+  readonly bgVideo: Locator;
 
+  // In this page object I want to show you XPath locators
+  // I personally prefer XPath locators because they are more strict.
   constructor(page: Page) {
     this.page = page;
     this.acceptCookiesButton = page.locator(
       '//div[@id="cookiescript_injected_wrapper"]//div[@id="cookiescript_accept"]'
     );
-    this.onasDropDown = page.locator(
-      '//div[@class="dropdown__toggle"]//a[text()="O nás"]'
+    this.aboutUsDropDown = page.locator(
+      '//div[@class="dropdown__toggle"]//a[@href="https://www.morosystems.cz/o-nas/"]'
     );
-    this.karieraButton = page.locator(
-      '//ul[@class="dropdown__list"]//a[text()="Kariéra"]'
+    this.careerButton = page.locator(
+      '//ul[@class="dropdown__list"]//a[@href="https://www.morosystems.cz/kariera/"]'
     );
     this.cityFilterDropDown = page.locator(
-      '//div[@id="pozice"]//span[@class="inp-custom-select__select-wrap"]'
+      '//div[@id="pozice"]//div[@class="inp-custom-select"]'
     );
-    this.positions = page.locator('//ul[@class="c-positions__wrap"]');
-    this.bgVideo = page.locator('//div[@class="b-intro__bg"]');
+    this.positionsWrap = page.locator('//ul[@class="c-positions__wrap"]');
     this.position = page.locator('//div[@id="pozice"]//li');
+    this.bgVideo = page.locator('//div[@class="b-intro__bg"]');
   }
 
   async acceptCookies() {
     const isVisible = await this.acceptCookiesButton
-      .waitFor({ state: 'visible', timeout: 5000 })
+      .waitFor({ state: 'visible', timeout: 10000 })
       .then(() => this.acceptCookiesButton.isVisible())
       .catch(() => false);
 
@@ -40,16 +42,15 @@ export class MoroSystemsPage {
     }
   }
 
-  async openKariera() {
-    await this.onasDropDown.click();
-    await this.karieraButton.click();
+  async openCareerPage() {
+    await this.aboutUsDropDown.click();
+    await this.careerButton.click();
   }
 
   async filterCity(city: string) {
+    await this.cityFilterDropDown.scrollIntoViewIfNeeded();
     await this.cityFilterDropDown.click();
-    await this.page.click(
-      `//div[@class="inp-custom-select__wrapper"]//label[@data-filter="${city}"]`
-    );
+    await this.page.locator(`//label[@data-filter="${city}"]`).click();
   }
 
   async checkFilterCity(city: string) {

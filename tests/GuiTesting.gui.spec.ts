@@ -20,7 +20,7 @@ test('GUI Testing', { tag: ['@chromium'] }, async ({ page }) => {
   );
   const moroSystemsPage = new MoroSystemsPage(page);
   await moroSystemsPage.acceptCookies();
-  await moroSystemsPage.openKariera();
+  await moroSystemsPage.openCareerPage();
   await moroSystemsPage.filterCity('Brno');
   await moroSystemsPage.checkFilterCity('Brno');
 });
@@ -40,7 +40,7 @@ test(
     const moroSystemsPage = new MoroSystemsPage(page);
     await expect(page).toHaveScreenshot({
       fullPage: true,
-      mask: [moroSystemsPage.bgVideo, moroSystemsPage.positions],
+      mask: [moroSystemsPage.bgVideo, moroSystemsPage.positionsWrap],
       maxDiffPixels: 20000,
       timeout: 20000,
     });
