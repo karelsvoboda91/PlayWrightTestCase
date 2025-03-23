@@ -35,6 +35,7 @@ test(
       waitUntil: 'domcontentloaded',
     });
     const moroSystemsPage = new MoroSystemsPage(page);
+    await moroSystemsPage.acceptCookies();
     await moroSystemsPage.careerPageVisualCheck();
   }
 );
