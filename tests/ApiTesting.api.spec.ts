@@ -11,16 +11,18 @@ test('API Testing', async () => {
   expect(getTasksResponse.status).toBe(200);
   expect(Array.isArray(getTasksResponse.data)).toBe(true);
 
-  const newTask: CreateTask = { text: 'new task' };
+  const taskName = 'new task';
+
+  const newTask: CreateTask = { text: taskName };
   const createTaskResponse = await apiClient.tasksPost(newTask);
   expect(createTaskResponse.status).toBe(200);
-  expect(createTaskResponse.data.text).toBe('new task');
+  expect(createTaskResponse.data.text).toBe(taskName);
   expect(createTaskResponse.data.completed).toBe(false);
   const taskId = createTaskResponse.data.id;
 
   const completeTaskResponse = await apiClient.tasksIdCompletePost(taskId);
   expect(completeTaskResponse.status).toBe(200);
-  expect(completeTaskResponse.data.text).toBe('new task');
+  expect(completeTaskResponse.data.text).toBe(taskName);
   expect(completeTaskResponse.data.completed).toBe(true);
 
   const deleteTaskResponse = await apiClient.tasksIdDelete(taskId);

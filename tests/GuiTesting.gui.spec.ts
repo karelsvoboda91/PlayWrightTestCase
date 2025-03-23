@@ -8,8 +8,8 @@ test('GUI Testing', { tag: ['@chromium'] }, async ({ page }) => {
   await googlePage.acceptCookies();
   await googlePage.search('MoroSystems');
 
-  const link = page.locator('(//span[text()="https://www.morosystems.cz"])[1]');
-  await expect(link).toBeVisible({ timeout: 7000 });
+  const link = page.getByText('https://www.morosystems.cz').first();
+  await expect(link).toBeVisible();
   await expect(page).toHaveURL(/\/search/);
   const title = await page.title();
   expect(title).toContain('MoroSystems');

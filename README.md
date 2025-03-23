@@ -21,4 +21,4 @@ Show report
 
 Prettier code style
 -----------------
-- Auto code fix: `npx prettier --write "**/*.ts"`
+- Auto code style fix: `npx prettier --write "**/*.ts"`

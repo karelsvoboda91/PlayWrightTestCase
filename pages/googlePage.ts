@@ -33,6 +33,7 @@ export class GooglePage {
   async search(text: string) {
     await this.searchInput.fill(text);
     await this.page.keyboard.press('Enter');
+    await this.page.waitForLoadState('domcontentloaded');
   }
 
   async openResult(text: string) {
