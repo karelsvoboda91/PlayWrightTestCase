@@ -34,15 +34,7 @@ test(
     await page.goto('https://www.morosystems.cz/kariera/', {
       waitUntil: 'domcontentloaded',
     });
-    await page.evaluate(() => {
-      document.body.style.overflow = 'hidden'; // hide scrollbar in headed mode
-    });
     const moroSystemsPage = new MoroSystemsPage(page);
-    await expect(page).toHaveScreenshot({
-      fullPage: true,
-      mask: [moroSystemsPage.bgVideo, moroSystemsPage.positionsWrap],
-      maxDiffPixels: 20000,
-      timeout: 20000,
-    });
+    await moroSystemsPage.careerPageVisualCheck();
   }
 );

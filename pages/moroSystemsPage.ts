@@ -59,4 +59,17 @@ export class MoroSystemsPage {
       await expect(element).toContainText(city);
     }
   }
+
+  async careerPageVisualCheck() {
+    await this.page.evaluate(() => {
+      document.body.style.overflow = 'hidden'; // hide scrollbar in headed mode
+    });
+    
+    await expect(this.page).toHaveScreenshot({
+      fullPage: true,
+      mask: [this.bgVideo, this.positionsWrap],
+      maxDiffPixels: 20000,
+      timeout: 20000,
+    });
+  }
 }
